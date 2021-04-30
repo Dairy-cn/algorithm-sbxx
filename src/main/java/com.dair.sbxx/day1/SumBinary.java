@@ -9,6 +9,11 @@ package com.dair.sbxx.day1;
 public class SumBinary {
 	
 	
+	public String addBinaryMethod2(String a,String b){
+		
+		return Integer.toBinaryString(Integer.valueOf(a,2)+Integer.valueOf(b,2));
+	}
+	
 	public String addBinary(String a, String b) {
 		String[] arrA = a.split("");
 		String[] arrB =b.split("");

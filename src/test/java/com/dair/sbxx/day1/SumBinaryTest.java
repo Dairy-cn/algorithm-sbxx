@@ -15,6 +15,6 @@ class SumBinaryTest {
 	@Test
 	void addBinary() {
 		SumBinary sumBinary=new SumBinary();
-		System.out.println(sumBinary.addBinary("1010","1011"));
+		System.out.println(sumBinary.addBinaryMethod2("1010","1011"));
 	}
 }
