@@ -398,7 +398,7 @@
       <option name="IGNORE_JAVADOC_PERIOD" value="true" />
       <option name="IGNORE_DUPLICATED_THROWS" value="false" />
       <option name="IGNORE_POINT_TO_ITSELF" value="true" />
-      <option name="myAdditionalJavadocTags" value="apiviz.stereotype, apiviz.landmark, apiviz.category, apiviz.exclude, apiviz.excludeSubtypes, apiviz.inherit, apiviz.uses, apiviz.has, apiviz.owns, apiviz.composedOf,date" />
+      <option name="myAdditionalJavadocTags" value="apiviz.stereotype, apiviz.landmark, apiviz.category, apiviz.exclude, apiviz.excludeSubtypes, apiviz.inherit, apiviz.uses, apiviz.has, apiviz.owns, apiviz.composedOf,date,author:,Desc:,Date:" />
     </inspection_tool>
     <inspection_tool class="JavaFxDefaultTag" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="JavaFxUnresolvedFxIdReference" enabled="false" level="WARNING" enabled_by_default="false" />
