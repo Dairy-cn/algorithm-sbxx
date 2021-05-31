@@ -15,13 +15,14 @@ public class MaxSubArray {
 			} else {
 				sum = arr[i];
 			}
-			 ans = Math.max(sum, ans);
+			ans = Math.max(sum, ans);
 		}
 		return ans;
 	}
-	
+
 	
 	public static void main(String[] args) {
+		System.out.println((16 & 0xaaaaaaaa) == 0);
 		int solution = solution(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4});
 		System.out.println(solution);
 	}
