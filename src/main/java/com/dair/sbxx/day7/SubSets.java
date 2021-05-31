@@ -17,6 +17,7 @@ public class SubSets {
 		List<Integer> tempArr=new ArrayList<>();
 		List<List<Integer>> list=new ArrayList<>();
 		int n=nums.length;
+
 		for (int mark=0;mark<(1<<n);++mark){
 			tempArr.clear();
 			for (int i=0;i<n;++i){
