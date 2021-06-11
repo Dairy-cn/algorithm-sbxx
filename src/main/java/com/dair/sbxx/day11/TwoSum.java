@@ -2,6 +2,11 @@ package com.dair.sbxx.day11;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicStampedReference;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author Dair
@@ -82,5 +87,16 @@ public class TwoSum {
 		for (int i : arr) {
 			System.out.println(i);
 		}
+		ReentrantLock lock=new ReentrantLock();
+		boolean b = lock.tryLock();
+		Semaphore semaphore=new Semaphore(11);
+		semaphore.tryAcquire();
+		CountDownLatch countDownLatch=new CountDownLatch(11);
+		long count = countDownLatch.getCount();
+		
+		
+		AtomicInteger atomicInteger=new AtomicInteger(0);
+		atomicInteger.incrementAndGet();
+		
 	}
 }
