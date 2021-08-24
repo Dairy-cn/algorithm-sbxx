@@ -1,5 +1,13 @@
 package com.dair.sbxx.day12;
 
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+
+
 /**
  * @author Dair
  * @since
@@ -46,6 +54,8 @@ public class MaximumTime {
 			}
 			
 		}
+		ThreadLocal threadLocal=new ThreadLocal();
+		threadLocal.set("sss");
 		return stringBuilder.toString();
 		
 	}
