@@ -6,9 +6,16 @@ package com.dair.sbxx.day29;
  */
 public class MyHashMap<K, V> {
 	
+	
+	/**
+	 * 链表
+	 *
+	 * @param <K>
+	 * @param <V>
+	 */
 	static class Node<K, V> {
 		
-		private K key;
+		final K key;
 		
 		private V value;
 		
@@ -24,9 +31,6 @@ public class MyHashMap<K, V> {
 			return key;
 		}
 		
-		public void setKey(K key) {
-			this.key = key;
-		}
 		
 		public V getValue() {
 			return value;
@@ -48,13 +52,25 @@ public class MyHashMap<K, V> {
 	
 	private Node[] tables;
 	
-	
+	/**
+	 * 初始化为16的容量
+	 */
 	public MyHashMap() {
 		this.tables = new Node[16];
 	}
 	
-	
-	public int hash(K key) {
+	/**
+	 * 扰动函数
+	 * key.hashCode()=》int类型
+	 * hashCode 与 hashCode>>>16 做异或运算，
+	 * 混合原始hashCode的高位和低位，以此来加大低位的随机数
+	 * 加入高位的一些特征，这样保留的信息就是高位信息+低位信息
+	 *
+	 *通过扰动函数返回的hash值减少为hash碰撞
+	 * @param key
+	 * @return
+	 */
+	static final int hash(Object key) {
 		int h = 0;
 		return key == null ? 0 : (h = key.hashCode()) ^ h >>> 16;
 	}
@@ -62,7 +78,7 @@ public class MyHashMap<K, V> {
 	public Node<K, V> getTables(int hashCode) {
 		
 		int n = tables.length;
-		int index = (n - 1) & hashCode;
+		int index = indexFor(hashCode, n);
 		return tables[index];
 	}
 	
@@ -86,7 +102,7 @@ public class MyHashMap<K, V> {
 	public V put(K key, V value) {
 		int hash = hash(key);
 		int length = tables.length;
-		int index = (length - 1) & hash;
+		int index = indexFor(hash, length);
 		if (tables[index] == null) {
 			tables[index] = new Node(key, value, null);
 		} else {
@@ -108,5 +124,18 @@ public class MyHashMap<K, V> {
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * 根据hash值和数组长度做与运算，(length-1）后正好是
+	 * 数组长度的低位掩码，与散列值做"与"操作后，消除高位，
+	 * 只保留低位
+	 *
+	 * @param hash   散列值
+	 * @param length 数组长度，要求为2的整数幂
+	 * @return
+	 */
+	static int indexFor(int hash, int length) {
+		return (length - 1) & hash;
 	}
 }
