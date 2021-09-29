@@ -72,7 +72,7 @@ public class MyHashMap<K, V> {
 		if (node != null) {
 			while (node != null) {
 				K k = node.key;
-				if (k == key || key.equals(k)) {
+				if ((hash(key) == hash(k)) && (k == key || (key != null && key.equals(k)))) {
 					return node.value;
 				} else {
 					node = node.next;
@@ -98,7 +98,7 @@ public class MyHashMap<K, V> {
 			} else {
 				while (table.next != null) {
 					table = table.next;
-					if (hash((K) table.key) == hash  && (key == table.key || (key != null && key.equals(table.key)))) {
+					if (hash((K) table.key) == hash && (key == table.key || (key != null && key.equals(table.key)))) {
 						V oldValue = (V) table.getValue();
 						table.setValue(value);
 						return oldValue;
