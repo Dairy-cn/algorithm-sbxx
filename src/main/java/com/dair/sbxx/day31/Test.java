@@ -16,7 +16,7 @@ public class Test {
 		} else if (num < 0) {
 			flag = false;
 		}
-		num = num>0?num:-num;
+		num = num > 0 ? num : -num;
 		while (num > 0) {
 			b.append(num % 2);
 			num = num / 2;
