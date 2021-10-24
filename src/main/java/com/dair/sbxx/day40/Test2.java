@@ -34,7 +34,7 @@ public class Test2 {
 			}
 			
 		}
-		return sb.toString();
+		return sb.toString().trim();
 		
 		
 	}
@@ -52,7 +52,7 @@ public class Test2 {
 				recursion(currSb, currNum % 10);
 			} else {
 				currSb.append(singles[currNum / 100]).append(" ");
-				currSb.append("Thousand").append(" ");
+				currSb.append("Hundred").append(" ");
 				recursion(currSb, currNum % 100);
 			}
 			
