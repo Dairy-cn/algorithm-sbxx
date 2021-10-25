@@ -1,8 +1,5 @@
 package com.dair.sbxx.day1;
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /*************************************************************
  * Description: 
@@ -11,8 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Copyright © 成都通吃岛信息技术有限公司 All right reserved
  ************************************************************/
 class SumBinaryTest {
-	
-	@Test
+//	@Test
 	void addBinary() {
 		SumBinary sumBinary=new SumBinary();
 		System.out.println(sumBinary.addBinaryMethod2("1010","1011"));

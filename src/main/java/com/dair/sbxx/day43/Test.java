@@ -1,78 +1,64 @@
 package com.dair.sbxx.day43;
 
-/*************************************************************
- * Description: 
- * Author: Dair
- * Date: 2021/10/25
- ************************************************************/
+/**
+ * @author Dair
+ * @since
+ */
 public class Test {
 	
-	public boolean searchMatrix(int[][] matrix, int target) {
+	/**
+	 * 数学归纳法，统计出前段和后段的情况分类
+	 * @param nums
+	 * @return
+	 */
+	public boolean sumGames(String nums) {
 		
-		int m = matrix.length;
-		int n = matrix[0].length;
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				if (matrix[i][j] == target) {
-					return true;
-				} else if (matrix[i][j] > target) {
-					continue;
-				}
-			}
-		}
-		return false;
-	}
-	
-	public boolean searchMatrix2(int[][] matrix, int target) {
-		int m = matrix.length;
-		int n = matrix[0].length;
+		int sumL = 0;
+		int sumR = 0;
+		int qmL = 0;
+		int qmR = 0;
+		int n = nums.length();
 		
-		int x = 0;
-		int y = n - 1;
-		while (x < m && y >= 0) {
-			if (matrix[x][y] == target) {
-				return true;
-			} else if (matrix[x][y] > target) {
-				--y;
-				
-			} else {
-				++x;
-			}
-		}
-		return false;
-	}
-	
-	public boolean searchMatrix3(int[][] matrix, int target) {
-		int m = matrix.length;
-		for (int i = 0; i < m; i++) {
-			int[] temp = matrix[i];
-			int left = 0;
-			int right = temp.length - 1;
-			//2,5,8,10,19
-			while (left <= right) {
-				//等同于int mid=(right+left)/2,但是可能会导致int 溢出
-				int mid = (right - left) / 2+left;
-				if (temp[mid] == target) {
-					return true;
-				} else if (temp[mid] > target) {
-					right = mid-1;
+		for (int i = 0; i < n; i++) {
+			if (nums.charAt(i) == '?') {
+				if (i < n / 2) {
+					++qmL;
 				} else {
-					left = mid + 1;
+					++qmR;
 				}
-				
+			} else {
+				if (i < n / 2) {
+					sumL += nums.charAt(i) - '0';
+				} else {
+					sumR += nums.charAt(i) - '0';
+				}
 			}
-			
+		}
+		
+		//如果前段和后段和相等，且前段和后段问号数相等
+		if (sumL == sumR && qmL == qmR) {
+			return false;
+		}
+		if (sumL == sumR && qmL != qmR) {
+			return true;
+		}
+		if (((qmL + qmR) & 1) != 0) {
+			return true;
+		}
+		if (sumL > sumR && qmL >= qmR) {
+			return true;
+		}
+		if (sumL < sumR && qmL <= qmR) {
+			return true;
+		}
+		if (Math.abs(sumL - sumR) != Math.abs(qmL - qmR) / 2 * 9) {
+			return true;
 		}
 		return false;
-		
 	}
 	
 	public static void main(String[] args) {
-		
-		
-		int[][] arr = new int[][]{{1, 4, 7, 11, 15}, {2, 5, 8, 12, 19}, {3, 6, 9, 16, 22}, {10, 13, 14, 17, 24}, {18, 21, 23, 26, 30}};
-		
-		System.out.println(new Test().searchMatrix3(arr, 5));
+		System.out.println(new Test().sumGames("25??"));
 	}
-	
 }
+
