@@ -105,6 +105,7 @@ public class Test2 {
 		count1=0;
 		count2=0;
 		for (int num : nums) {
+			
 			if(num==cand1){
 				++count1;
 			}else if(num==cand2){
