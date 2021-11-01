@@ -53,20 +53,26 @@ public class Test {
 		for (int i = 0; i < nums.length; i++) {
 			x ^= nums[i];
 		}
-		int x1 = Integer.MIN_VALUE == x ? x : x ^ -x;
-		
-		int a = ~x1;//6=> 10110
-		//反码 3 5
-		++a; // 10111
-		int b = a == Integer.MIN_VALUE ? a : x1 ^ a; //00110& 10111=>10110
-		b = ~b; //01001
-		++b; //001010
-		//x1的二进制最低位为1
-		int index = (int) (Math.log(b) / Math.log(2));
+//		int x1 = Integer.MIN_VALUE == x ? x : x & -x;
+//
+//		int a = ~x1;//6=> 10110
+//		//反码 3 5
+//		++a; // 10111
+//		int b = a == Integer.MIN_VALUE ? a : x1 ^ a; //00110& 10111=>10110
+//		b = ~b; //01001
+//		++b; //001010
+//		//x1的二进制最低位为1
+//		int index = (int) (Math.log(b) / Math.log(2));
+		int index = -1;
+		for (int i = 31; i >= 0 && index == -1; i--) {
+			if (((x >> i) & 1) == 1) {
+				index = i;
+			}
+		}
 		List<Integer> list1 = new ArrayList<>();
 		List<Integer> list2 = new ArrayList<>();
 		for (int i = 0; i < nums.length; i++) {
-			if ((nums[i] & 1 << (index - 1)) >= 0) {
+			if ((nums[i] >> index & 1) == 1) {
 				list1.add(nums[i]);
 			} else {
 				list2.add(nums[i]);
