@@ -13,6 +13,10 @@ public class ListNode {
 	
 	ListNode next;
 	
+	ListNode left;
+	
+	ListNode right;
+	
 	public ListNode(int val) {
 		this.val = val;
 	}
