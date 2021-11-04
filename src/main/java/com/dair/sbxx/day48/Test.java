@@ -1,5 +1,11 @@
 package com.dair.sbxx.day48;
 
+import sun.plugin.javascript.navig.Array;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @author Dair
  * @since
@@ -18,6 +24,9 @@ public class Test {
 	public void deleteNode(ListNode node) {
 		node.val=node.next.val;
 		node.next=node.next.next;
+		
+		List<Integer> res=new ArrayList<>();
+		Collections.reverse(res);
 	}
 	
 }
