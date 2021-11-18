@@ -6,11 +6,15 @@ package com.dair.sbxx.day50;
  */
 public class TreeNode {
 	
-	int val;
+	public int val;
 	
-	TreeNode left;
+	public TreeNode left;
 	
-	TreeNode right;
+	public TreeNode right;
 	
-	
+	public TreeNode(int val, TreeNode left, TreeNode right) {
+		this.val = val;
+		this.left = left;
+		this.right = right;
+	}
 }
