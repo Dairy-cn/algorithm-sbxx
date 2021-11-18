@@ -35,4 +35,5 @@ public class Test {
 		System.out.println(new Test().isPerfectSquare(9));
 	}
 	
+	
 }

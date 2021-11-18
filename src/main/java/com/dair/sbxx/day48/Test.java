@@ -1,6 +1,8 @@
 package com.dair.sbxx.day48;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,6 +25,9 @@ public class Test {
 	public void deleteNode(ListNode node) {
 		node.val=node.next.val;
 		node.next=node.next.next;
+		
+		List<Integer> res=new ArrayList<>();
+		Collections.reverse(res);
 	}
 	
 	
