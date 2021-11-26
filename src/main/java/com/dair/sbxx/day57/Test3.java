@@ -78,6 +78,5 @@ public class Test3 {
 			}
 		}
 		return res;
-		Math.pow()
 	}
 }
