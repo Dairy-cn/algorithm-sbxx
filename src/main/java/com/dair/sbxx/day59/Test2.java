@@ -47,7 +47,7 @@ public class Test2 {
 					int k = n - num;
 					int l = m;
 					int res = 0;
-					while (j-k>=0){
+					while (j - k >= 0) {
 						res = l % 10;
 						l /= 10;
 						k++;
@@ -61,7 +61,60 @@ public class Test2 {
 		}
 	}
 	
+	
 	public static void main(String[] args) {
-		System.out.println(new Test2().findNthDigit(2147483647));
+		System.out.println(new Test2().findNthDigit3(11));
 	}
+	
+	public int findNthDigit2(int n) {
+		
+		int len = 1;
+		int res = 0;
+		//定位该数M的位数
+		while (len * 9 * Math.pow(10, len - 1) < n) {
+			n -= len * 9 * Math.pow(10, len - 1);
+			len++;
+		}
+		//起始数字
+		int m = (int) Math.pow(10, len - 1);
+		
+		int x = 1;
+		while (x * len < n) {
+			//该数M与起始位数的间隔数
+			x++;
+			//m即是找的数M
+			m++;
+		}
+		// 在数M的第几位（从右到左）
+		int i = x * len - n + 1;
+		int l = m;
+		while (i > 0) {
+			res = l % 10;
+			l /= 10;
+			i--;
+		}
+		return res;
+		
+	}
+	
+	
+	public int findNthDigit3(int n) {
+		
+		int len = 1;
+		int res = 0;
+		//定位该数M的位数
+		while (len * 9 * Math.pow(10, len - 1) < n) {
+			n -= len * 9 * Math.pow(10, len - 1);
+			len++;
+		}
+		//起始数字
+		int m = (int) Math.pow(10, len - 1);
+		int x = n / len + m - 1;
+		
+		n = (x - m + 1) * len - n;
+		return n == 0 ? (int)(x % 10) : (int)(x / Math.pow(10, n) % 10);
+		
+		
+	}
+	
 }
