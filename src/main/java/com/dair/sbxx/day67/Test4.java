@@ -43,19 +43,47 @@ public class Test4 {
 	
 	public static void main(String[] args) {
 		
-		System.out.println(new Test4().concatenatedBinary2(4));
+//		System.out.println(new Test4().concatenatedBinary2(4));
+		System.out.println(new Test4().minDeletionSize(new String[]{"zyx","wvu","tsr"}));
+		
 	}
 	
 	
 	public int concatenatedBinary2(int n) {
-			int a = 0;
-			long res = 0;
-			for (int i = 1; i <=n; i++) {
-				if((i & (i - 1))==0){
-					a++;
-				}
-				res=((res<<a)+i)%MOD;
+		int a = 0;
+		long res = 0;
+		for (int i = 1; i <= n; i++) {
+			if ((i & (i - 1)) == 0) {
+				a++;
 			}
-			return (int) res;
+			res = ((res << a) + i) % MOD;
+		}
+		return (int) res;
 	}
+	
+	public int leastMinutes(int n) {
+		int res = 0;
+		int a = 1;
+		while (a < n) {
+			a = 2 * a;
+			res++;
+		}
+		return res;
+	}
+	
+	public int minDeletionSize(String[] strs) {
+		
+		int n = strs[0].length();
+		int res = 0;
+		for (int i = 0; i < n; i++) {
+			for (int j = 1; j < strs.length; j++) {
+				if (strs[j - 1].charAt(i) > strs[j].charAt(i)) {
+					res++;
+				}
+			}
+		}
+		return res;
+	}
+	
+	
 }
