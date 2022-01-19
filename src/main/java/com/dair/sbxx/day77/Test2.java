@@ -88,8 +88,7 @@ public class Test2 {
 		while (k-- > 0) {
 		
 		}
-		
-		
+		return res;
 	}
 	
 	public static void main(String[] args) {
