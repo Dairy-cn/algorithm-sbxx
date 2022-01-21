@@ -74,12 +74,8 @@ public class Test2 {
 		return list;
 	}
 	
-	public static void main(String[] args) {
-		TreeNode treeNode = new TreeNode(1);
-		System.out.println(new Test2().binaryTreePaths(4));
-	}
-
-//	List<String> list = new ArrayList<>();
+	
+	List<String> list = new ArrayList<>();
 	
 	public List<String> binaryTreePaths(TreeNode root) {
 		binary(root, "");
@@ -181,10 +177,62 @@ public class Test2 {
 				treeNodeQueue.offer(poll.right);
 			}
 		}
-		int[] arr=new int[list.size()];
+		int[] arr = new int[list.size()];
 		for (int i = 0; i < arr.length; i++) {
-			arr[i]=list.get(i);
+			arr[i] = list.get(i);
 		}
 		return arr;
+	}
+	
+	//1,2,3
+	public int findTilt(TreeNode root) {
+		if (root == null) {
+			return 0;
+		}
+		int left = 0;
+		if (root.left != null) {
+			left = count(root.left);
+		}
+		int right = 0;
+		if (root.right != null) {
+			right = count(root.right);
+		}
+		return Math.abs(left - right) + findTilt(root.left) + findTilt(root.right);
+	}
+	
+	private int count(TreeNode root) {
+		int res = 0;
+		if (root == null) {
+			return res;
+		}
+		return root.val + count(root.left) + count(root.right);
+	}
+	
+	public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+		if (subRoot == null) {
+			return true;
+		}
+		if (root == null) {
+			return false;
+		}
+		return isSameTree(root.left, subRoot) || isSubtree(root.right, subRoot) || isSubtree(root, subRoot);
+	}
+	
+	public boolean isSameTree(TreeNode t, TreeNode s) {
+		if (t == null && s == null) {
+			return true;
+		}
+		if (t == null || s == null) {
+			return false;
+		}
+		if (t.val != s.val) {
+			return false;
+		}
+		return isSameTree(s.left, t.left) && isSameTree(s.right, t.right);
+	}
+	
+	public static void main(String[] args) {
+	
+	
 	}
 }
