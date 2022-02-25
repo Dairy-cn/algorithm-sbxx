@@ -1,4 +1,4 @@
-package com.dair.sbxx.year2022;
+package com.dair.sbxx.year2022.day01;
 
 import java.util.PriorityQueue;
 
