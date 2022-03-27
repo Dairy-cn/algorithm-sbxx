@@ -14,13 +14,14 @@ public class Test2 {
 	public static List<Stack<String>> jobCodeList = new ArrayList<>();
 	
 	public static void main(String[] args) {
+		long startTime = System.currentTimeMillis();
 		List<JobInfo> jobInfos = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 100; i++) {
 			JobInfo jobInfo = new JobInfo();
-			jobInfo.setBuId(new Random().nextInt(5) + "");
+			jobInfo.setBuId(new Random().nextInt(10) + "");
 			jobInfo.setJobCode(i + "");
-			jobInfo.setChangeCode(i % 5 + "");
-			jobInfo.setHandleUserCode(i % 2 + "");
+			jobInfo.setChangeCode(new Random().nextInt(12) + "");
+			jobInfo.setHandleUserCode(new Random().nextInt(10) + "");
 			jobInfos.add(jobInfo);
 		}
 		JobInfo[] shu = new JobInfo[jobInfos.size()];
@@ -32,10 +33,16 @@ public class Test2 {
 		List<JobNumInfo> jobNumInfoList = new ArrayList<>();
 		String[] buArr = new String[jobInfos.size()];
 		int index = 0;
-		for (int i = 0; i < 5; i++) {
+		int totalCount = 0;
+		for (int i = 0; totalCount < 100; i++) {
 			JobNumInfo jobNumInfo = new JobNumInfo();
 			jobNumInfo.setBuId(i + "");
-			jobNumInfo.setJobNum(2);
+			int count = new Random().nextInt(10);
+			totalCount += count;
+			if (totalCount > 100) {
+				count = totalCount - 100;
+			}
+			jobNumInfo.setJobNum(count);
 			jobNumInfoList.add(jobNumInfo);
 			if (jobNumInfo.getJobNum() > 0) {
 				for (Integer integer = 0; integer < jobNumInfo.getJobNum(); integer++) {
@@ -48,6 +55,8 @@ public class Test2 {
 		for (JobInfo jobInfo : jobInfoListFinal) {
 			System.out.println(jobInfo);
 		}
+		long endTime = System.currentTimeMillis();
+		System.out.println("花费时间：" + (endTime - startTime) / 1000);
 //		permutation(shu);
 //		int i = 0;
 //		List<List<JobInfo>> allList = new ArrayList<>();
@@ -134,6 +143,8 @@ public class Test2 {
 		if (first == arr.length - 1) {
 //			List<JobInfo> jobInfoList = new ArrayList<>();
 			int count = 0;
+			int count1 = 0;
+			int count2 = 0;
 			HashMap<String, Integer> mapChangeCode = new HashMap<>();
 			HashMap<String, Integer> mapHandleUserCode = new HashMap<>();
 			for (int i = 0; i < arr.length; i++) {
@@ -144,26 +155,18 @@ public class Test2 {
 				String key = arr[i].getChangeCode() + "/" + arr[i].getQualityBuId();
 				int changeCodeCount = mapChangeCode.getOrDefault(key, 0);
 				mapChangeCode.put(key, ++changeCodeCount);
-				
+				if (changeCodeCount > 1) {
+					++count1;
+				}
 				String key2 = arr[i].getHandleUserCode() + "/" + arr[i].getQualityBuId();
 				int handleUserCount = mapHandleUserCode.getOrDefault(key2, 0);
 				mapHandleUserCode.put(key2, ++handleUserCount);
-			}
-			int count1 = 0;
-			for (Map.Entry<String, Integer> entry : mapChangeCode.entrySet()) {
-				if(entry.getValue()>1){
-					count1 += entry.getValue();
-				}
-			}
-			
-			int count2 = 0;
-			for (Map.Entry<String, Integer> entry : mapHandleUserCode.entrySet()) {
-				if(entry.getValue()>1){
-					count2 += entry.getValue();
+				if (handleUserCount > 1) {
+					++count2;
 				}
 			}
 			System.out.println(count);
-			if (jobInfoListFinal==null) {
+			if (jobInfoListFinal == null) {
 				copyArr(arr);
 				countMax = count;
 				countMax1 = count1;
@@ -192,12 +195,12 @@ public class Test2 {
 	}
 	
 	private static void copyArr(JobInfo[] arr) {
-		jobInfoListFinal=new JobInfo[arr.length];
+		jobInfoListFinal = new JobInfo[arr.length];
 		for (int i = 0; i < arr.length; i++) {
 			JobInfo jobInfo = new JobInfo();
 			JobInfo info = arr[i];
-			BeanUtils.copyProperties(info,jobInfo);
-			jobInfoListFinal[i]= jobInfo;
+			BeanUtils.copyProperties(info, jobInfo);
+			jobInfoListFinal[i] = jobInfo;
 		}
 	}
 	
