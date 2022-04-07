@@ -1,4 +1,4 @@
-package com.dair.sbxx.year2022.day004.day04;
+package com.dair.sbxx.year2022.day04;
 
 /**
  * 模拟退火算法

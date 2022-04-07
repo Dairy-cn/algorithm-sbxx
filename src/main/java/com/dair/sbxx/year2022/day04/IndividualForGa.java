@@ -1,4 +1,4 @@
-package com.dair.sbxx.year2022.day004.day04;
+package com.dair.sbxx.year2022.day04;
 
 /**
  * Created by 13633 on 2019/12/9.

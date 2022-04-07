@@ -1,4 +1,4 @@
-package com.dair.sbxx.year2022.day003.day03;
+package com.dair.sbxx.year2022.day04;
 
 import lombok.Data;
 
@@ -15,4 +15,6 @@ public class JobInfo {
 	private Long buId;
 	
 	private Long qualityBuId;
+	
+	
 }

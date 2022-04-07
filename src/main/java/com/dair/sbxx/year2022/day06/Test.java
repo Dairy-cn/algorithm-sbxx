@@ -1,4 +1,4 @@
-package com.dair.sbxx.year2022.day006.day06;
+package com.dair.sbxx.year2022.day06;
 
 import java.util.ArrayList;
 import java.util.List;
