@@ -8,7 +8,7 @@ public class Test {
 	
 	public static void main(String[] args) {
 		double[] arr[];
-		arr=new double[][];
+		arr=new double[12][12];
 		System.out.println(arr[0]);
 	}
 }
