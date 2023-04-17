@@ -31,5 +31,10 @@
       <option name="name" value="Central Repository" />
       <option name="url" value="https://maven.aliyun.com/repository/public" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="caf_repositories" />
+      <option name="name" value="caf_repositories" />
+      <option name="url" value="http://repo-gp17cicd.group.cpic.com/artifactory/group" />
+    </remote-repository>
   </component>
 </project>
