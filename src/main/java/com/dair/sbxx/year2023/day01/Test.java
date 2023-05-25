@@ -1,4 +1,4 @@
-package com.dair.sbxx.year2023;
+package com.dair.sbxx.year2023.day01;
 
 /**
  * @author Dair

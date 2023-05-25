@@ -1,4 +1,4 @@
-package com.dair.sbxx.year2023;
+package com.dair.sbxx.year2023.day01;
 
 /**
  * @author Dair
@@ -35,31 +35,24 @@ public class Test2 {
 	public int getMaximumGenerated(int n) {
 		int max = 0;
 		int[] arr = new int[n + 1];
-		
-		for (int i = 0; i <= n; i++) {
-			arr[i]= queryMax(i);
-			max=Math.max(max,arr[i]);
+		arr[0] = 0;
+		if (n >= 1) {
+			arr[1] = 1;
+			max=1;
+		}
+		for (int i = 2; i <= n; i++) {
+			if (i % 2 == 1) {
+				arr[i] = arr[i / 2] + arr[i / 2 + 1];
+			} else {
+				arr[i] = arr[i / 2];
+			}
+			max = Math.max(max, arr[i]);
 		}
 		return max;
 	}
 	
-	public int queryMax(int n) {
-		if (n == 1) {
-			return 1;
-		} else if (n == 0) {
-			return 0;
-		}
-		//基数
-		if (n % 2 == 1) {
-			return queryMax(n / 2) + queryMax(n / 2 + 1);
-		} else {
-			return queryMax(n / 2);
-		}
-		
-	}
-	
 	public static void main(String[] args) {
-		System.out.println(new Test2().getMaximumGenerated(4));
+		System.out.println(new Test2().getMaximumGenerated(0));
 		
 	}
 }
