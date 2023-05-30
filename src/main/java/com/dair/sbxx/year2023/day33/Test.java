@@ -33,16 +33,15 @@ public class Test {
 		//3 2  1
 		//2 3 1
 		for (int i = 1; i < arr.length; i++) {
-			int j = i-1;
-			int temp=arr[i];
-			for (;j>=0;j--) {
+			int j = i - 1;
+			int temp = arr[i];
+			for (; j >= 0; j--) {
 				if (temp >= arr[j]) {
 					break;
 				}
-				arr[j+1]=arr[j];
-				
+				arr[j + 1] = arr[j];
 			}
-			arr[j+1]=temp;
+			arr[j + 1] = temp;
 			
 		}
 		
@@ -50,20 +49,20 @@ public class Test {
 	}
 	
 	
-	public void selectedSort(int[] arr){
+	public void selectedSort(int[] arr) {
 		
 		for (int i = 0; i < arr.length; i++) {
 			
-			int minIndex=i;
-			for (int j = i+1; j <arr.length ; j++) {
-				if(arr[j]<arr[i]){
-					minIndex=j;
+			int minIndex = i;
+			for (int j = i + 1; j < arr.length; j++) {
+				if (arr[j] < arr[i]) {
+					minIndex = j;
 				}
 			}
-			temp(arr,i,minIndex);
+			temp(arr, i, minIndex);
 		}
 		
-		
+
 	}
 	
 	public static void main(String[] args) {

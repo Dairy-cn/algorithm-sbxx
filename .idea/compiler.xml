@@ -8,12 +8,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="algorithm-sbxx" />
+        <module name="sbxx" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="algorithm-sbxx" target="1.8" />
-      <module name="sbxx" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
