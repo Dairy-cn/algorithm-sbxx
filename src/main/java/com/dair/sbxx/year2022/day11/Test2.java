@@ -44,6 +44,7 @@ public class Test2 {
 				res[i][j] = a;
 			}
 		}
+		
 		return res;
 	}
 }
